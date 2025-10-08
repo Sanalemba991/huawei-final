@@ -33,7 +33,7 @@ export default function AdminLogin() {
           pauseOnHover: true,
           draggable: true,
         });
-        
+
         // Immediate redirect for better UX
         setTimeout(() => {
           router.push('/admin/dashboard');
@@ -76,18 +76,18 @@ export default function AdminLogin() {
             backgroundSize: '40px 40px'
           }}></div>
         </div>
-        
+
         {/* Decorative Elements */}
         <div className="absolute top-10 left-10 w-32 h-32 bg-white/10 rounded-full"></div>
         <div className="absolute top-1/3 right-20 w-24 h-24 bg-white/5 rounded-full"></div>
         <div className="absolute bottom-20 left-20 w-40 h-40 bg-white/5 rounded-full"></div>
         <div className="absolute bottom-1/3 right-10 w-16 h-16 bg-white/10 rounded-full"></div>
-        
+
         {/* Content */}
         <div className="relative z-10 flex flex-col justify-center items-center text-center px-12 w-full">
-      
-          
-          
+
+
+
           {/* Branding Content */}
           <div className="text-white">
             <h1 className="text-4xl font-bold mb-4">Admin Portal</h1>
@@ -97,7 +97,7 @@ export default function AdminLogin() {
               <p>Secure, reliable, and efficient network management at your fingertips.</p>
             </div>
           </div>
-          
+
           {/* Feature Points */}
           <div className="mt-12 space-y-4 text-white/90">
             <div className="flex items-center space-x-3">
@@ -122,9 +122,9 @@ export default function AdminLogin() {
           {/* Mobile Logo (only shown on mobile) */}
           <div className="lg:hidden text-center mb-8">
             <div className="mb-4">
-              <img 
-                src="/huaweilogo-new.png" 
-                alt="Huawei Logo" 
+              <img
+                src="/huaweilogo-new.png"
+                alt="Huawei Logo"
                 className="w-32 h-32 object-contain mx-auto"
               />
             </div>
@@ -139,9 +139,9 @@ export default function AdminLogin() {
               <div className="text-center">
                 {/* Logo for Desktop Form Side */}
                 <div className="mb-4">
-                  <img 
-                    src="/huaweilogo-new.png" 
-                    alt="Huawei Logo" 
+                  <img
+                    src="/huaweilogo-new.png"
+                    alt="Huawei Logo"
                     className="w-24 h-24 object-contain mx-auto"
                   />
                 </div>
@@ -240,15 +240,13 @@ export default function AdminLogin() {
 
               {/* Footer */}
               <div className="mt-8 pt-6 border-t border-gray-200">
-                <p className="text-center text-xs text-gray-500">
-                  © 2025 Huawei Technologies. Secure Admin Access.
-                </p>
+
               </div>
             </div>
           </div>
         </div>
       </div>
-      
+
       <ToastContainer
         position="top-right"
         autoClose={3000}
