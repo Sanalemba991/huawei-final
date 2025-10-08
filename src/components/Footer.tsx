@@ -206,7 +206,7 @@ const Footer = () => {
         <div className="border-t border-gray-100 py-4">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between text-center sm:text-left space-y-2 sm:space-y-0">
             <p className="text-xs text-gray-500">
-              © 2025 Huawei Technologies Co., Ltd. All Rights Reserved.
+              © 2025 Huawei eKit UAE. All Rights Reserved.
             </p>
 
             <div className="flex flex-wrap justify-center sm:justify-end items-center gap-3 text-xs ">
