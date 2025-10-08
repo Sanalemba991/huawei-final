@@ -131,243 +131,243 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
 
     // PDF Generation Function
     const downloadProductInfo = async () => {
-    setIsDownloading(true);
-    try {
-        const pdf = new jsPDF('p', 'mm', 'a4');
-        const pageWidth = pdf.internal.pageSize.getWidth();
-        const pageHeight = pdf.internal.pageSize.getHeight();
-        const margin = 20;
-        const contentWidth = pageWidth - (2 * margin);
-        let yPosition = margin;
-
-        // Helper function to check if new page is needed
-        const checkNewPage = (requiredSpace: number) => {
-            if (yPosition > pageHeight - requiredSpace - margin) {
-                pdf.addPage();
-                yPosition = margin;
-                return true;
-            }
-            return false;
-        };
-
-        // Add header with brand styling
-pdf.setFillColor("firebrick")
- // Dark gray (0.27*255 ≈ 69, but using 45 for better contrast)
-        pdf.rect(0, 0, pageWidth, 35, 'F');
-
-        // Add Huawei logo
+        setIsDownloading(true);
         try {
-            const logoData = await getImageDataUrl('/huaweilogo-new.png');
-            const logoWidth = 40;
-            const logoHeight = 15;
-            const logoX = margin;
-            const logoY = 10; // Centered in 35px header
-            pdf.addImage(logoData, 'PNG', logoX, logoY, logoWidth, logoHeight);
-        } catch (logoError) {
-            console.warn('Failed to add logo to PDF:', logoError);
-        }
+            const pdf = new jsPDF('p', 'mm', 'a4');
+            const pageWidth = pdf.internal.pageSize.getWidth();
+            const pageHeight = pdf.internal.pageSize.getHeight();
+            const margin = 20;
+            const contentWidth = pageWidth - (2 * margin);
+            let yPosition = margin;
 
-        // Add title next to logo
-        pdf.setTextColor(255, 255, 255);
-        pdf.setFontSize(22);
-        pdf.setFont('helvetica', 'bold');
-        pdf.text('Product Specification', pageWidth / 2 + 15, 21, { align: 'center' });
+            // Helper function to check if new page is needed
+            const checkNewPage = (requiredSpace: number) => {
+                if (yPosition > pageHeight - requiredSpace - margin) {
+                    pdf.addPage();
+                    yPosition = margin;
+                    return true;
+                }
+                return false;
+            };
 
-        yPosition = 50;
+            // Add header with brand styling
+            pdf.setFillColor("firebrick")
+            // Dark gray (0.27*255 ≈ 69, but using 45 for better contrast)
+            pdf.rect(0, 0, pageWidth, 35, 'F');
 
-        // Add all product images in a grid layout
-        const imagesPerRow = 2;
-        const imgWidth = (contentWidth - 10) / imagesPerRow;
-        const imgHeight = imgWidth;
-        let imageCol = 0;
-
-        for (let i = 0; i < allImages.length; i++) {
+            // Add Huawei logo
             try {
-                const imgData = await getImageDataUrl(allImages[i]);
-                const imgX = margin + (imageCol * (imgWidth + 10));
+                const logoData = await getImageDataUrl('/huaweilogo-new.png');
+                const logoWidth = 40;
+                const logoHeight = 15;
+                const logoX = margin;
+                const logoY = 10; // Centered in 35px header
+                pdf.addImage(logoData, 'PNG', logoX, logoY, logoWidth, logoHeight);
+            } catch (logoError) {
+                console.warn('Failed to add logo to PDF:', logoError);
+            }
 
-                // Check if we need a new page
-                checkNewPage(imgHeight + 20);
+            // Add title next to logo
+            pdf.setTextColor(255, 255, 255);
+            pdf.setFontSize(22);
+            pdf.setFont('helvetica', 'bold');
+            pdf.text('Product Specification', pageWidth / 2 + 15, 21, { align: 'center' });
 
+            yPosition = 50;
+
+            // Add all product images in a grid layout
+            const imagesPerRow = 2;
+            const imgWidth = (contentWidth - 10) / imagesPerRow;
+            const imgHeight = imgWidth;
+            let imageCol = 0;
+
+            for (let i = 0; i < allImages.length; i++) {
                 try {
-                    pdf.addImage(imgData, 'JPEG', imgX, yPosition, imgWidth, imgHeight);
-                } catch (imageError) {
-                    console.warn(`Failed to add image ${i + 1} to PDF:`, imageError);
-                    // Draw placeholder box
-                    pdf.setDrawColor(229, 231, 235);
-                    pdf.setLineWidth(1);
-                    pdf.rect(imgX, yPosition, imgWidth, imgHeight);
-                    pdf.setTextColor(156, 163, 175);
-                    pdf.setFontSize(9);
-                    pdf.setFont('helvetica', 'italic');
-                    pdf.text(`Image ${i + 1}`, imgX + imgWidth / 2, yPosition + imgHeight / 2, { 
-                        align: 'center' 
-                    });
-                    pdf.text('not available', imgX + imgWidth / 2, yPosition + imgHeight / 2 + 5, { 
-                        align: 'center' 
-                    });
+                    const imgData = await getImageDataUrl(allImages[i]);
+                    const imgX = margin + (imageCol * (imgWidth + 10));
+
+                    // Check if we need a new page
+                    checkNewPage(imgHeight + 20);
+
+                    try {
+                        pdf.addImage(imgData, 'JPEG', imgX, yPosition, imgWidth, imgHeight);
+                    } catch (imageError) {
+                        console.warn(`Failed to add image ${i + 1} to PDF:`, imageError);
+                        // Draw placeholder box
+                        pdf.setDrawColor(229, 231, 235);
+                        pdf.setLineWidth(1);
+                        pdf.rect(imgX, yPosition, imgWidth, imgHeight);
+                        pdf.setTextColor(156, 163, 175);
+                        pdf.setFontSize(9);
+                        pdf.setFont('helvetica', 'italic');
+                        pdf.text(`Image ${i + 1}`, imgX + imgWidth / 2, yPosition + imgHeight / 2, {
+                            align: 'center'
+                        });
+                        pdf.text('not available', imgX + imgWidth / 2, yPosition + imgHeight / 2 + 5, {
+                            align: 'center'
+                        });
+                    }
+
+                    imageCol++;
+                    if (imageCol >= imagesPerRow) {
+                        imageCol = 0;
+                        yPosition += imgHeight + 10;
+                    }
+                } catch (error) {
+                    console.error(`Error loading image ${i + 1}:`, error);
                 }
-
-                imageCol++;
-                if (imageCol >= imagesPerRow) {
-                    imageCol = 0;
-                    yPosition += imgHeight + 10;
-                }
-            } catch (error) {
-                console.error(`Error loading image ${i + 1}:`, error);
             }
-        }
 
-        // Move to next line if images didn't fill the row
-        if (imageCol > 0) {
-            yPosition += imgHeight + 10;
-        }
-
-        yPosition += 10;
-
-        // Add product title
-        checkNewPage(30);
-        pdf.setTextColor(31, 41, 55);
-        pdf.setFontSize(20);
-        pdf.setFont('helvetica', 'bold');
-        const titleLines = pdf.splitTextToSize(product.name, contentWidth);
-        pdf.text(titleLines, margin, yPosition);
-        yPosition += (titleLines.length * 8) + 8;
-
-        // Add separator line
-        pdf.setDrawColor(229, 231, 235);
-        pdf.setLineWidth(0.5);
-        pdf.line(margin, yPosition, pageWidth - margin, yPosition);
-        yPosition += 12;
-
-        // Add description section
-        checkNewPage(40);
-        pdf.setFontSize(14);
-        pdf.setFont('helvetica', 'bold');
-        pdf.setTextColor(239, 68, 68);
-        pdf.text('Description', margin, yPosition);
-        yPosition += 10;
-
-        pdf.setFont('helvetica', 'normal');
-        pdf.setTextColor(55, 65, 81);
-        pdf.setFontSize(11);
-        const descLines: string[] = pdf.splitTextToSize(product.description, contentWidth);
-        
-        // Handle description across pages if needed
-        descLines.forEach((line: string, index: number) => {
-            if (checkNewPage(15)) {
-                // If new page, add section title again
-                pdf.setFontSize(14);
-                pdf.setFont('helvetica', 'bold');
-                pdf.setTextColor(239, 68, 68);
-                pdf.text('Description (continued)', margin, yPosition);
-                yPosition += 10;
-                pdf.setFont('helvetica', 'normal');
-                pdf.setTextColor(55, 65, 81);
-                pdf.setFontSize(11);
+            // Move to next line if images didn't fill the row
+            if (imageCol > 0) {
+                yPosition += imgHeight + 10;
             }
-            pdf.text(line, margin, yPosition);
-            yPosition += 6;
-        });
-        
-        yPosition += 8;
 
-        // Add key features section
-        if (product.keyFeatures && product.keyFeatures.length > 0) {
+            yPosition += 10;
+
+            // Add product title
             checkNewPage(30);
+            pdf.setTextColor(31, 41, 55);
+            pdf.setFontSize(20);
+            pdf.setFont('helvetica', 'bold');
+            const titleLines = pdf.splitTextToSize(product.name, contentWidth);
+            pdf.text(titleLines, margin, yPosition);
+            yPosition += (titleLines.length * 8) + 8;
 
+            // Add separator line
+            pdf.setDrawColor(229, 231, 235);
+            pdf.setLineWidth(0.5);
+            pdf.line(margin, yPosition, pageWidth - margin, yPosition);
+            yPosition += 12;
+
+            // Add description section
+            checkNewPage(40);
             pdf.setFontSize(14);
             pdf.setFont('helvetica', 'bold');
             pdf.setTextColor(239, 68, 68);
-            pdf.text('Key Features', margin, yPosition);
+            pdf.text('Description', margin, yPosition);
             yPosition += 10;
 
             pdf.setFont('helvetica', 'normal');
-            pdf.setTextColor(31, 41, 55);
+            pdf.setTextColor(55, 65, 81);
             pdf.setFontSize(11);
+            const descLines: string[] = pdf.splitTextToSize(product.description, contentWidth);
 
-            product.keyFeatures.forEach((feature, index) => {
-                const featureLines = pdf.splitTextToSize(feature, contentWidth - 10);
-                const featureHeight = featureLines.length * 6 + 4;
-
-                if (checkNewPage(featureHeight + 10)) {
-                    // Add section title on new page
+            // Handle description across pages if needed
+            descLines.forEach((line: string, index: number) => {
+                if (checkNewPage(15)) {
+                    // If new page, add section title again
                     pdf.setFontSize(14);
                     pdf.setFont('helvetica', 'bold');
                     pdf.setTextColor(239, 68, 68);
-                    pdf.text('Key Features (continued)', margin, yPosition);
+                    pdf.text('Description (continued)', margin, yPosition);
                     yPosition += 10;
                     pdf.setFont('helvetica', 'normal');
-                    pdf.setTextColor(31, 41, 55);
+                    pdf.setTextColor(55, 65, 81);
                     pdf.setFontSize(11);
                 }
-
-                // Add bullet point
-                pdf.setFillColor(31, 41, 55);
-                pdf.circle(margin + 2, yPosition - 1.5, 1.2, 'F');
-
-                // Add feature text
-                pdf.text(featureLines, margin + 10, yPosition);
-                yPosition += featureLines.length * 6 + 4;
+                pdf.text(line, margin, yPosition);
+                yPosition += 6;
             });
 
             yPosition += 8;
+
+            // Add key features section
+            if (product.keyFeatures && product.keyFeatures.length > 0) {
+                checkNewPage(30);
+
+                pdf.setFontSize(14);
+                pdf.setFont('helvetica', 'bold');
+                pdf.setTextColor(239, 68, 68);
+                pdf.text('Key Features', margin, yPosition);
+                yPosition += 10;
+
+                pdf.setFont('helvetica', 'normal');
+                pdf.setTextColor(31, 41, 55);
+                pdf.setFontSize(11);
+
+                product.keyFeatures.forEach((feature, index) => {
+                    const featureLines = pdf.splitTextToSize(feature, contentWidth - 10);
+                    const featureHeight = featureLines.length * 6 + 4;
+
+                    if (checkNewPage(featureHeight + 10)) {
+                        // Add section title on new page
+                        pdf.setFontSize(14);
+                        pdf.setFont('helvetica', 'bold');
+                        pdf.setTextColor(239, 68, 68);
+                        pdf.text('Key Features (continued)', margin, yPosition);
+                        yPosition += 10;
+                        pdf.setFont('helvetica', 'normal');
+                        pdf.setTextColor(31, 41, 55);
+                        pdf.setFontSize(11);
+                    }
+
+                    // Add bullet point
+                    pdf.setFillColor(31, 41, 55);
+                    pdf.circle(margin + 2, yPosition - 1.5, 1.2, 'F');
+
+                    // Add feature text
+                    pdf.text(featureLines, margin + 10, yPosition);
+                    yPosition += featureLines.length * 6 + 4;
+                });
+
+                yPosition += 8;
+            }
+
+            // Add category information
+            checkNewPage(30);
+            pdf.setFontSize(14);
+            pdf.setFont('helvetica', 'bold');
+            pdf.setTextColor(239, 68, 68);
+            pdf.text('Product Category', margin, yPosition);
+            yPosition += 10;
+
+            pdf.setFont('helvetica', 'normal');
+            pdf.setTextColor(55, 65, 81);
+            pdf.setFontSize(11);
+            const categoryText = `${product.navbarCategory.name} › ${product.category.name} › ${product.subcategory.name}`;
+            pdf.text(categoryText, margin, yPosition);
+            yPosition += 12;
+
+            // Add product code/SKU if available
+            if (product.slug) {
+                pdf.setFontSize(9);
+                pdf.setTextColor(107, 114, 128);
+                pdf.text(`Product Code: ${product.slug}`, margin, yPosition);
+            }
+
+            // Add footer to all pages
+            const totalPages = pdf.internal.pages.length - 1;
+            for (let i = 1; i <= totalPages; i++) {
+                pdf.setPage(i);
+                const footerY = pageHeight - 12;
+
+                pdf.setDrawColor(229, 231, 235);
+                pdf.setLineWidth(0.3);
+                pdf.line(margin, footerY - 5, pageWidth - margin, footerY - 5);
+
+                pdf.setFontSize(8);
+                pdf.setTextColor(156, 163, 175);
+                pdf.text('Generated from Product Catalog', margin, footerY);
+                pdf.text(new Date().toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                }), pageWidth / 2, footerY, { align: 'center' });
+                pdf.text(`Page ${i} of ${totalPages}`, pageWidth - margin, footerY, { align: 'right' });
+            }
+
+            // Save the PDF with sanitized filename
+            const sanitizedName = product.slug.replace(/[^a-z0-9-]/gi, '_');
+            pdf.save(`${sanitizedName}-specification.pdf`);
+
+        } catch (error) {
+            console.error('Error generating PDF:', error);
+            alert('Failed to generate PDF. Please try again.');
+        } finally {
+            setIsDownloading(false);
         }
-
-        // Add category information
-        checkNewPage(30);
-        pdf.setFontSize(14);
-        pdf.setFont('helvetica', 'bold');
-        pdf.setTextColor(239, 68, 68);
-        pdf.text('Product Category', margin, yPosition);
-        yPosition += 10;
-
-        pdf.setFont('helvetica', 'normal');
-        pdf.setTextColor(55, 65, 81);
-        pdf.setFontSize(11);
-        const categoryText = `${product.navbarCategory.name} › ${product.category.name} › ${product.subcategory.name}`;
-        pdf.text(categoryText, margin, yPosition);
-        yPosition += 12;
-
-        // Add product code/SKU if available
-        if (product.slug) {
-            pdf.setFontSize(9);
-            pdf.setTextColor(107, 114, 128);
-            pdf.text(`Product Code: ${product.slug}`, margin, yPosition);
-        }
-
-        // Add footer to all pages
-        const totalPages = pdf.internal.pages.length - 1;
-        for (let i = 1; i <= totalPages; i++) {
-            pdf.setPage(i);
-            const footerY = pageHeight - 12;
-            
-            pdf.setDrawColor(229, 231, 235);
-            pdf.setLineWidth(0.3);
-            pdf.line(margin, footerY - 5, pageWidth - margin, footerY - 5);
-            
-            pdf.setFontSize(8);
-            pdf.setTextColor(156, 163, 175);
-            pdf.text('Generated from Product Catalog', margin, footerY);
-            pdf.text(new Date().toLocaleDateString('en-US', { 
-                year: 'numeric', 
-                month: 'long', 
-                day: 'numeric' 
-            }), pageWidth / 2, footerY, { align: 'center' });
-            pdf.text(`Page ${i} of ${totalPages}`, pageWidth - margin, footerY, { align: 'right' });
-        }
-
-        // Save the PDF with sanitized filename
-        const sanitizedName = product.slug.replace(/[^a-z0-9-]/gi, '_');
-        pdf.save(`${sanitizedName}-specification.pdf`);
-        
-    } catch (error) {
-        console.error('Error generating PDF:', error);
-        alert('Failed to generate PDF. Please try again.');
-    } finally {
-        setIsDownloading(false);
-    }
-};
+    };
 
     // Contact Modal Component
     const ContactModal = () => {
@@ -486,34 +486,35 @@ pdf.setFillColor("firebrick")
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
                 >
-                    <div className="flex items-center space-x-1 sm:space-x-2 text-xs sm:text-sm text-gray-600">
-  <Link href="/" className="hover:text-red-600 transition-colors">Home</Link>
-  <span className="text-gray-400">→</span>
-  <Link href="/products" className="hover:text-red-600 transition-colors">Products</Link>
-  <span className="text-gray-400">→</span>
-  <Link
-    href={`/products/${product.navbarCategory.slug}`}
-    className="hover:text-red-600 transition-colors"
-  >
-    {product.navbarCategory.name}
-  </Link>
-  <span className="text-gray-400">→</span>
-  <Link
-    href={`/products/${product.navbarCategory.slug}/${product.category.slug}`}
-    className="hover:text-red-600 transition-colors"
-  >
-    {product.category.name}
-  </Link>
-  <span className="text-gray-400">→</span>
-  <Link
-    href={`/products/${product.navbarCategory.slug}/${product.category.slug}/${product.subcategory.slug}`}
-    className="hover:text-red-600 transition-colors"
-  >
-    {product.subcategory.name}
-  </Link>
-  <span className="text-gray-400">→</span>
-  <span className="text-gray-900 font-semibold">{product.name}</span>
-</div>
+                    <div className="flex flex-wrap items-center space-x-1 sm:space-x-2 text-[10px] sm:text-xs text-gray-600">
+                        <Link href="/" className="hover:text-red-600 transition-colors">Home</Link>
+                        <span className="text-gray-400">→</span>
+                        <Link href="/products" className="hover:text-red-600 transition-colors">Products</Link>
+                        <span className="text-gray-400">→</span>
+                        <Link
+                            href={`/products/${product.navbarCategory.slug}`}
+                            className="hover:text-red-600 transition-colors"
+                        >
+                            {product.navbarCategory.name}
+                        </Link>
+                        <span className="text-gray-400">→</span>
+                        <Link
+                            href={`/products/${product.navbarCategory.slug}/${product.category.slug}`}
+                            className="hover:text-red-600 transition-colors"
+                        >
+                            {product.category.name} Subcategories
+                        </Link>
+                        <span className="text-gray-400">→</span>
+                        <Link
+                            href={`/products/${product.navbarCategory.slug}/${product.category.slug}/${product.subcategory.slug}`}
+                            className="hover:text-red-600 transition-colors"
+                        >
+                             Explore {product.subcategory.name}
+                        </Link>
+                        <span className="text-gray-400">→</span>
+                        <span className="text-gray-900 font-semibold">{product.name}</span>
+                    </div>
+
 
                 </motion.nav>
 

@@ -93,20 +93,20 @@ export default function CategorySubCategoriesClient({ data }: CategorySubCategor
         className="relative overflow-hidden"
       >
         <div className="absolute inset-0 z-0">
-                 <Image
-                   src="/banner/first.jpg"
-                   alt="Products Banner"
-                   fill
-                   className="object-cover"
-                   priority
-                   quality={90}
-                 />
-                 <div className="absolute inset-0 bg-gradient-to-r from-gray-900/95 via-gray-900/85 to-red-900/90"></div>
-                 <div className="absolute inset-0 opacity-10" style={{
-                   backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)',
-             
-                 }}></div>
-               </div>
+          <Image
+            src="/banner/first.jpg"
+            alt="Products Banner"
+            fill
+            className="object-cover"
+            priority
+            quality={90}
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-gray-900/95 via-gray-900/85 to-red-900/90"></div>
+          <div className="absolute inset-0 opacity-10" style={{
+            backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)',
+
+          }}></div>
+        </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
           <motion.div
@@ -122,17 +122,24 @@ export default function CategorySubCategoriesClient({ data }: CategorySubCategor
               transition={{ duration: 0.6, delay: 0.3 }}
               className="mb-4"
             >
-              <div className="flex items-center space-x-2 text-sm text-gray-300">
-                <Link href="/" className="hover:text-white transition-colors duration-200">Home</Link>
+              <div className="flex flex-wrap items-center space-x-1 sm:space-x-2 text-[10px] sm:text-sm text-gray-300">
+                <Link href="/" className="hover:text-white transition-colors duration-200">
+                  Home
+                </Link>
                 <span>→</span>
-                <Link href="/products" className="hover:text-white transition-colors duration-200">Products</Link>
+                <Link href="/products" className="hover:text-white transition-colors duration-200">
+                  Products
+                </Link>
                 <span>→</span>
                 <Link href={`/products/${navbarCategory.slug}`} className="hover:text-white transition-colors duration-200">
                   {navbarCategory.name}
                 </Link>
                 <span>→</span>
-                <span className="text-white font-medium">{category.name}</span>
+                <span className="text-white font-medium">
+                  {category.name} Subcategories
+                </span>
               </div>
+
             </motion.nav>
 
             <div className="inline-flex items-center px-3 py-1 bg-red-600/20 backdrop-blur-sm border border-red-400/30 rounded-full mb-4">
@@ -186,8 +193,8 @@ export default function CategorySubCategoriesClient({ data }: CategorySubCategor
 
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        
-        
+
+
 
         {/* SubCategories Grid Header */}
         <motion.div
@@ -227,7 +234,7 @@ export default function CategorySubCategoriesClient({ data }: CategorySubCategor
                   <div className="bg-white rounded-xl border border-gray-200 hover:border-red-400 hover:shadow-lg transition-all duration-300 overflow-hidden h-full flex flex-col">
                     {/* Image Container */}
                     <motion.div
-                      className="relative h-48 bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center p-4 overflow-hidden"
+                      className="relative h-48  flex items-center justify-center p-4 overflow-hidden"
                       whileHover={{ scale: 1.02 }}
                       transition={{ duration: 0.3 }}
                     >
@@ -258,11 +265,11 @@ export default function CategorySubCategoriesClient({ data }: CategorySubCategor
                       )}
 
                       {/* Status Badge */}
-                      
+
                     </motion.div>
 
                     {/* Content Container */}
-                    <div className="p-4 flex-1 flex flex-col">
+                    <div className=" bg-gradient-to-br from-gray-100 to-gray-50 p-4 flex-1 flex flex-col">
                       <h3 className="text-base font-semibold text-gray-900 group-hover:text-red-600 transition-colors mb-2 line-clamp-2 leading-tight">
                         {subcategory.name}
                       </h3>

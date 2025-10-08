@@ -220,7 +220,7 @@ const ProductsPage = () => {
                   <div className="bg-white rounded-xl border border-gray-200 hover:border-red-400 hover:shadow-lg transition-all duration-300 overflow-hidden h-full flex flex-col">
                     {/* Image Container */}
                     <motion.div
-                      className="relative h-48 bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center p-4 overflow-hidden"
+                      className="relative h-48  flex items-center justify-center p-4 overflow-hidden"
                       whileHover={{ scale: 1.02 }}
                       transition={{ duration: 0.3 }}
                     >
@@ -253,7 +253,7 @@ const ProductsPage = () => {
                     </motion.div>
 
                     {/* Content Container */}
-                    <div className="p-4 flex-1 flex flex-col">
+                    <div className="bg-gradient-to-br from-gray-100 to-gray-50 p-4 flex-1 flex flex-col">
                       <h3 className="text-base font-semibold text-gray-900 group-hover:text-red-600 transition-colors mb-2 line-clamp-2 leading-tight">
                         {category.name}
                       </h3>
