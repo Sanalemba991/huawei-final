@@ -179,7 +179,7 @@ const ProductsPage = () => {
           className="text-center mb-8"
         >
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
-            Our <span className="text-red-600">Product Categories</span>
+            Our Product<span className="text-red-600"> Categories</span>
           </h2>
           <p className="text-gray-600">
             Discover our comprehensive range of solutions tailored to meet your needs
