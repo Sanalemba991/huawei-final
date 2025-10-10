@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { motion, useInView } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { Variants } from 'framer-motion';
-import Topic1 from '../../public/SolutionBusiness/First.png';
+import Topic1 from '../../public/Solution/IntelligentBussiness.png';
 import Topic2 from '../../public/SolutionEdu/Campus.jpg';
 import Topic3 from '../../public/Solution/IntelligentHealthcare.png';
 import Topic4 from '../../public/Solution/IntelligentOffice.png';
