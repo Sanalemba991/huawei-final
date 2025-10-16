@@ -96,43 +96,43 @@ const Banner = () => {
         initial="hidden"
         animate="visible"
       >
-       <motion.div
-  initial="hidden"
-  animate="visible"
-  variants={containerVariants}
-  className="text-center md:text-left space-y-3"
->
-  <motion.h1
-    className="text-3xl md:text-3xl font-bold text-white tracking-tight"
-    variants={itemVariants}
-  >
-    Huawei <span className="text-red-600">eKit</span>
-  </motion.h1>
-
-  <motion.h2
-    className="text-lg md:text-2xl font-semibold text-white"
-    variants={itemVariants}
-  >
-    Enterprise Solutions for a Smarter Future
-  </motion.h2>
-
-  <motion.p
-    className="text-sm md:text-base text-white max-w-lg"
-    variants={itemVariants}
-  >
-    Empower your business with next-generation digital technology designed for
-    performance, scalability, and innovation.
-  </motion.p>
-
-    <motion.button
-          className="px-6 py-2 border-2 cursor-pointer border-red-600 text-white/80 hover:bg-red-600 hover:text-white font-medium transition-colors duration-300"
-          variants={buttonVariants}
-          whileHover="hover"
-          onClick={handleExploreClick}
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          variants={containerVariants}
+          className="text-center md:text-left space-y-3"
         >
-          Explore Products
-        </motion.button>
-</motion.div>
+          <motion.h1
+            className="text-3xl md:text-3xl font-bold text-white tracking-tight"
+            variants={itemVariants}
+          >
+            Huawei <span className="text-red-600">eKit</span>
+          </motion.h1>
+
+          <motion.h2
+            className="text-lg md:text-2xl font-semibold text-white"
+            variants={itemVariants}
+          >
+            Enterprise Solutions for a Smarter Future
+          </motion.h2>
+
+          <motion.p
+            className="text-sm md:text-base text-white max-w-lg"
+            variants={itemVariants}
+          >
+            Empower your business with next-generation digital technology designed for
+            performance, scalability, and innovation.
+          </motion.p>
+
+          <motion.button
+            className="px-6 py-2 border-2 cursor-pointer border-red-600 text-white/80 hover:bg-red-600 hover:text-white font-medium transition-colors duration-300"
+            variants={buttonVariants}
+            whileHover="hover"
+            onClick={handleExploreClick}
+          >
+            Explore Products
+          </motion.button>
+        </motion.div>
 
       </motion.div>
     </section>

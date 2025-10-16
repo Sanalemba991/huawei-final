@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import { Variants } from 'framer-motion';
 import Topic1 from '../../public/Solution/IntelligentBussiness.png';
 import Topic2 from '../../public/SolutionEdu/Campus.jpg';
-import Topic3 from '../../public/Solution/IntelligentHealthcare.png';
+import Topic3 from '../../public/Solution/IntelligentHealthcare.jpg';
 import Topic4 from '../../public/Solution/IntelligentOffice.png';
 import Topic5 from '../../public/Topic/Topic 5.png';
 import Topic6 from '../../public/Topic/Topic 6.jpg';
@@ -95,7 +95,7 @@ const Topic = () => {
                                     variants={itemVariants}
                                     className="inline-flex items-center px-3 py-1 rounded-full bg-gradient-to-r from-red-50 to-red-100 border border-red-200 mb-4 mx-auto"
                                 >
-                                    <div className="w-2 h-2 bg-gradient-to-r from-red-400 to-red-600 rounded-full mr-2 animate-pulse"></div>
+                                    <div className=" bg-gradient-to-r from-red-400 to-red-600 mr-2 "></div>
                                     <span className="text-red-600 text-sm font-semibold tracking-wide">Intelligent Office</span>
                                 </motion.div>
 
@@ -137,13 +137,13 @@ const Topic = () => {
 
                         >
                             <div className="bg-white rounded-lg transition-all duration-300 overflow-hidden border border-gray-100 h-full flex flex-col group-hover:shadow-lg">
-                                <div className="relative h-56 md:h-64 overflow-hidden bg-gradient-to-br from-red-100 to-red-200">
+                                <div className="relative w-full bg-gradient-to-br from-red-100 to-red-200">
                                     <Image
                                         src={images.huaweiEkit}
                                         alt="HUAWEI eKit"
-                                        fill
-                                        style={{ objectFit: 'cover' }}
-                                        className=" transition-transform duration-500 ease-out"
+                                        width={800}
+                                        height={400}
+                                        className="w-full h-auto transition-transform duration-500 ease-out"
                                     />
                                 </div>
                                 <div className="p-4 flex flex-col flex-grow text-center">
@@ -166,11 +166,12 @@ const Topic = () => {
 
                         >
                             <div className="bg-white rounded-lg transition-all duration-300 overflow-hidden border border-gray-100 h-full flex flex-col group-hover:shadow-lg">
-                                <div className="relative h-56 md:h-64 overflow-hidden bg-gradient-to-br from-red-100 to-red-200">
+                                <div className="relative w-full bg-gradient-to-br from-red-100 to-red-200">
                                     <Image
                                         src={images.oceanProtect}
                                         alt="OceanProtect Data Protection"
-                                        fill
+                                        width={800}
+                                        height={400}
                                         style={{ objectFit: 'cover' }}
                                         className=" transition-transform duration-500 ease-out"
                                     />
@@ -195,11 +196,12 @@ const Topic = () => {
 
                         >
                             <div className="bg-white rounded-lg transition-all duration-300 overflow-hidden border border-gray-100 h-full flex flex-col group-hover:shadow-lg">
-                                <div className="relative h-56 md:h-64 overflow-hidden bg-gradient-to-br from-red-100 to-red-200">
+                                 <div className="relative w-full bg-gradient-to-br from-red-100 to-red-200">
                                     <Image
                                         src={images.digitalPartner}
                                         alt="Huawei Digital Partner"
-                                        fill
+                                         width={800}
+                                        height={400}
                                         style={{ objectFit: 'cover' }}
                                         className=" transition-transform duration-500 ease-out"
                                     />
@@ -223,20 +225,21 @@ const Topic = () => {
                             className="group cursor-pointer"
                         >
                             <div className="bg-white rounded-lg transition-all duration-300 overflow-hidden border border-gray-100 h-full flex flex-col group-hover:shadow-lg">
-                                <div className="relative h-56 md:h-64 overflow-hidden bg-gradient-to-br from-blue-100 to-blue-200">
-                                     <Image
+                               <div className="relative w-full bg-gradient-to-br from-red-100 to-red-200">
+                                    <Image
                                         src={images.intelligentTransportation}
                                         alt="Huawei Digital Partner"
-                                        fill
+                                        width={800}
+                                        height={300}
                                         style={{ objectFit: 'cover' }}
                                         className=" transition-transform duration-500 ease-out"
                                     />
                                 </div>
                                 <div className="p-4 flex flex-col flex-grow text-center">
                                     <span className="inline-flex items-center px-3 py-1.5 rounded-full bg-blue-50 text-red-600 text-sm font-semibold mb-4 self-center">
-                                        Intelligent Education
+                                        Intelligent Transfortation 
                                     </span>
-                                    <h3 className="text-xl font-bold text-gray-900 mb-3">Intelligent Transportation</h3>
+                                    <h3 className="text-xl font-bold text-gray-900 mb-3">Transformative Mobility Solutions </h3>
                                     <p className="text-gray-600 text-base leading-relaxed flex-grow">
                                         Revolutionizing urban mobility with AI-powered traffic management, smart infrastructure, and connected vehicle systems for safer, more efficient transportation networks.
                                     </p>
