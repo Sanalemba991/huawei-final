@@ -103,21 +103,21 @@ const Banner = () => {
   className="text-center md:text-left space-y-3"
 >
   <motion.h1
-    className="text-3xl md:text-3xl font-bold text-gray-900 tracking-tight"
+    className="text-3xl md:text-3xl font-bold text-white tracking-tight"
     variants={itemVariants}
   >
     Huawei <span className="text-red-600">eKit</span>
   </motion.h1>
 
   <motion.h2
-    className="text-lg md:text-2xl font-semibold text-gray-800"
+    className="text-lg md:text-2xl font-semibold text-white"
     variants={itemVariants}
   >
     Enterprise Solutions for a Smarter Future
   </motion.h2>
 
   <motion.p
-    className="text-sm md:text-base text-gray-600 max-w-lg"
+    className="text-sm md:text-base text-white max-w-lg"
     variants={itemVariants}
   >
     Empower your business with next-generation digital technology designed for
