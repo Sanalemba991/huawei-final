@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import { Variants } from 'framer-motion';
 import Topic1 from '../../public/Solution/IntelligentBussiness.png';
 import Topic2 from '../../public/SolutionEdu/Campus.jpg';
-import Topic3 from '../../public/Solution/IntelligentHealthcare.jpg';
+import Topic3 from '../../public/Solution/IntelligentHealthcare.png';
 import Topic4 from '../../public/Solution/IntelligentOffice.png';
 import Topic5 from '../../public/Topic/Topic 5.png';
 import Topic6 from '../../public/Topic/Topic 6.jpg';
@@ -196,27 +196,27 @@ const Topic = () => {
 
                         >
                             <div className="bg-white rounded-lg transition-all duration-300 overflow-hidden border border-gray-100 h-full flex flex-col group-hover:shadow-lg">
-                                 <div className="relative w-full bg-gradient-to-br from-red-100 to-red-200">
+                                <div className="relative w-full bg-gradient-to-br from-red-100 to-red-200">
                                     <Image
                                         src={images.digitalPartner}
                                         alt="Huawei Digital Partner"
-                                         width={800}
+                                        width={800}
                                         height={400}
                                         style={{ objectFit: 'cover' }}
-                                        className=" transition-transform duration-500 ease-out"
+                                        className="transition-transform duration-500 ease-out"
                                     />
                                 </div>
                                 <div className="p-4 flex flex-col flex-grow text-center">
                                     <span className="inline-flex items-center px-3 py-1.5 rounded-full bg-red-50 text-red-600 text-sm font-semibold mb-4 self-center">
-                                        Intelligent Education
+                                        Intelligent Office
                                     </span>
-                                    <h3 className="text-xl font-bold text-gray-900 mb-3">Next-Generation Learning Environments</h3>
+                                    <h3 className="text-xl font-bold text-gray-900 mb-3">Smart & Connected Workspaces</h3>
                                     <p className="text-gray-600 text-base leading-relaxed flex-grow">
-                                        Create immersive, interactive learning experiences with smart classrooms, remote education platforms, and AI-assisted teaching tools that make education more accessible, engaging, and effective for students and educators alike.
-
+                                        Transform traditional offices into intelligent, collaborative environments with IoT-enabled devices, unified communication systems, and AI-powered management tools that boost productivity, streamline operations, and enhance employee experience.
                                     </p>
                                 </div>
                             </div>
+
                         </motion.article>
 
                         {/* Gartner Report */}
@@ -225,7 +225,7 @@ const Topic = () => {
                             className="group cursor-pointer"
                         >
                             <div className="bg-white rounded-lg transition-all duration-300 overflow-hidden border border-gray-100 h-full flex flex-col group-hover:shadow-lg">
-                               <div className="relative w-full bg-gradient-to-br from-red-100 to-red-200">
+                                <div className="relative w-full bg-gradient-to-br from-red-100 to-red-200">
                                     <Image
                                         src={images.intelligentTransportation}
                                         alt="Huawei Digital Partner"
@@ -237,7 +237,7 @@ const Topic = () => {
                                 </div>
                                 <div className="p-4 flex flex-col flex-grow text-center">
                                     <span className="inline-flex items-center px-3 py-1.5 rounded-full bg-blue-50 text-red-600 text-sm font-semibold mb-4 self-center">
-                                        Intelligent Transfortation 
+                                        Intelligent Transfortation
                                     </span>
                                     <h3 className="text-xl font-bold text-gray-900 mb-3">Transformative Mobility Solutions </h3>
                                     <p className="text-gray-600 text-base leading-relaxed flex-grow">
