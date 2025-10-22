@@ -3,12 +3,12 @@ import React, { useState, useRef } from 'react';
 import { ChevronLeft, ChevronRight, ArrowUp } from 'lucide-react';
 import { motion, useInView } from 'framer-motion';
 import { Variants } from 'framer-motion';
-import Smart from "../../public/stories/SmartCAm.jpg"
-import Tech from "../../public/stories/Tech.jpg"
-import Financial from "../../public/stories/Financial.jpg"
-import Manufacturing from "../../public/stories/Manufacturing.jpg"
-import Health from "../../public/stories/Health.jpg"
-import Retail from "../../public/stories/Retail.jpg"
+import Smart from "../../public/stories/SmartCAm.png"
+import Tech from "../../public/stories/Tech.png"
+import Financial from "../../public/stories/Financial.png"
+import Manufacturing from "../../public/stories/Manufacturing.png"
+import Health from "../../public/stories/Health.png"
+import Retail from "../../public/stories/Retail.png"
 
 const Stories = () => {
   const [currentSlide, setCurrentSlide] = useState(0);

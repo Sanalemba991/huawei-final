@@ -5,26 +5,7 @@ import { motion } from 'framer-motion';
 import { Variants } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { useRouter } from 'next/navigation';
-import SS801111 from "../../public/About/Proc1.jpg";
-import S2201222 from "../../public/About/S220-2.png"
-import AP661333 from "../../public/About/AP661-3.png"
-import AP371444 from "../../public/About/AP371-4.png"
-import S3801555 from "../../public/About/S380-5.png"
-import S3101666 from "../../public/About/S310-6.png"
-import S1101777 from "../../public/About/S110-7.png"
-import A9160888 from "../../public/About/AP160-8.png"
-import S3809999 from "../../public/About/S380-9.png"
-import S2200000 from "../../public/About/S220-10.png"
-import AP263011 from "../../public/About/AP263-11.png"
-import USG6000E022 from "../../public/About/USG6000E-12.png"
-import S2200111113 from "../../public/About/S220-13.png"
-import S1100111114 from "../../public/About/S110-14.png"
-import AP76111115 from "../../public/About/AP761-15.png"
-import AR30311116 from "../../public/About/AR303-16.png"
-import S380111117 from "../../public/About/S380-17.png"
-import S220011118 from "../../public/About/S220-18.png"
-import AP36191119 from "../../public/About/AP361-19.png"
-import Banner from "../../public/About/banner.png"
+
 const fadeInUp : Variants= {
     hidden: { opacity: 0, y: 60 },
     visible: {

@@ -10,7 +10,7 @@ const categories = [
     title: "100 Intelligent Transformation <span class='text-red-600'>Stories</span>",
     subtitle: "Real Stories. Real Impact.",
     description: "Discover how organizations across industries are using intelligent technologies to drive innovation, boost efficiency, and create smarter futures.",
-    image: "/intelligent/intelligent.jpg",
+    image: "/intelligent/intelligent.png",
     buttonText: "Learn more ",
     buttonLink: "/stories/intelligent-transformation",
     alignLeft: true
