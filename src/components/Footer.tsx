@@ -121,9 +121,9 @@ const Footer = () => {
         <div className="py-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {/* Company Section */}
-            <div className="text-center md:text-left">
+            <div className="space-y-4">
               <div
-                className="flex items-center justify-center md:justify-start cursor-pointer mb-2"
+                className="flex items-center cursor-pointer"
                 onClick={() => handleInternalLink("/")}
                 role="button"
                 tabIndex={0}
@@ -133,26 +133,30 @@ const Footer = () => {
                   }
                 }}
               >
-                <div className="relative w-32 h-10 md:w-40 md:h-12 bg-white rounded-md flex items-center justify-center">
+                <div className=" justify-center w-full h-10  rounded-md p-2">
                   <Image
                     src="/huaweilogo-new.png"
                     alt="Huawei Logo"
-                    width={160}
-                    height={48}
+                    width={120}
+                    height={40}
                     priority
-                    className="object-contain transition-all duration-300 group-hover:scale-105"
+                    className="object-contain transition-all duration-300 hover:scale-105"
                   />
                 </div>
+
               </div>
 
-              <p className="text-sm text-gray-600 leading-tight">
+              <p className="text-sm text-gray-600 leading-relaxed">
                 UAE Distributor for innovative Huawei eKit solutions and enterprise digital transformation.
               </p>
+
+              {/* Social Media Icons */}
+
             </div>
 
             {/* Footer Sections */}
             {footerSections.map((section, index) => (
-              <div key={index} className="space-y-4 text-center md:text-left">
+              <div key={index} className="space-y-4">
                 <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wide">
                   {section.title}
                 </h3>
@@ -160,7 +164,7 @@ const Footer = () => {
                 {section.isContact ? (
                   <div className="space-y-3">
                     {contactInfo.map((contact, contactIndex) => (
-                      <div key={contactIndex} className="flex items-start justify-center md:justify-start">
+                      <div key={contactIndex} className="flex items-start">
                         <div className="text-red-600 mr-2 flex-shrink-0 mt-0.5">
                           {contact.icon}
                         </div>
@@ -184,7 +188,7 @@ const Footer = () => {
                       <li key={linkIndex}>
                         <button
                           onClick={() => handleInternalLink(link.href)}
-                          className="text-sm text-gray-600 hover:text-red-600 cursor-pointer transition-colors duration-200 text-center md:text-left w-full"
+                          className="text-sm text-gray-600 hover:text-red-600 cursor-pointer transition-colors duration-200 text-left w-full"
                           type="button"
                         >
                           {link.name}
@@ -200,12 +204,12 @@ const Footer = () => {
 
         {/* Bottom Footer */}
         <div className="border-t border-gray-100 py-4">
-          <div className="flex flex-col items-center sm:flex-row sm:items-center sm:justify-between">
-            <p className="text-xs text-gray-500 text-center sm:text-left">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between text-center sm:text-left space-y-2 sm:space-y-0">
+            <p className="text-xs text-gray-500">
               © 2025 Huawei eKit UAE. All Rights Reserved.
             </p>
 
-            <div className="flex flex-wrap justify-center sm:justify-end items-center gap-3 text-xs mt-4 sm:mt-0">
+            <div className="flex flex-wrap justify-center sm:justify-end items-center gap-3 text-xs ">
               <button
                 onClick={() => handleInternalLink('/terms-of-service')}
                 className="text-gray-500 hover:text-red-600 transition-colors duration-200 cursor-pointer"

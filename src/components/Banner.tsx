@@ -61,12 +61,7 @@ const Banner = () => {
         duration: 0.4
       }
     },
-    hover: {
-      scale: 1.05,
-      transition: {
-        duration: 0.2
-      }
-    }
+    
   };
 
   return (
