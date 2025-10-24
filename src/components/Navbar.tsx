@@ -394,24 +394,29 @@ const Navbar = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             {/* Logo and Distributor Text */}
-            <div className="flex-shrink-0 flex items-center">
-              <div className="flex flex-col">
+           {/* Logo and Distributor Text */}
+            {/* Logo and Distributor Text */}
+            <div className="flex-shrink-0">
+              <div className="flex flex-col items-center">
                 <Link href="/" onClick={handleLogoClick}>
                   <Image
                     src="/huaweilogo-new.png"
                     alt="Huawei"
-                    width={isScrolled ? 100 : 120}
-                    height={isScrolled ? 30 : 40}
+                    width={isScrolled ? 110 : 120}
+                    height={isScrolled ? 36 : 40}
                     priority
-                    className={`transition-all duration-300 ${isScrolled ? 'h-6 w-auto' : 'h-8 w-auto'
+                    className={`transition-all duration-300 ${isScrolled ? 'h-7 w-auto' : 'h-8 w-auto'
                       }`}
                   />
                 </Link>
-                {/* Authorized Distributor Text - Always visible */}
-                <div className="text-xs font-semibold tracking-wide mt-1">
-                  <span className="text-black">Authorized</span>
-                  <span className="text-black"> Distributor in </span>
-                  <span className="text-red-600">UAE</span>
+                {/* Authorized Distributor Text - Below logo */}
+                <div 
+                  className={`font-semibold text-center transition-all duration-300 whitespace-nowrap ${
+                    isScrolled ? 'text-[8.5px] mt-0.5' : 'text-[9.5px] mt-1'
+                  }`}
+                  style={{ letterSpacing: '-0.04em', lineHeight: '1.1' }}
+                >
+                  <span className="text-black">Authorized Distributor in </span><span className="text-red-600">UAE</span>
                 </div>
               </div>
             </div>
@@ -426,8 +431,8 @@ const Navbar = () => {
                       onMouseEnter={(e) => handleDropdownMouseEnter(item.title, e)}
                       onMouseLeave={handleDropdownMouseLeave}
                       className={`navbar-item flex items-center space-x-1 px-3 py-2 text-sm font-medium transition-colors duration-200 relative ${isNavItemActive(item.href) || activeDropdown === item.title || hoveredItem === item.title
-                          ? 'text-red-600'
-                          : 'text-gray-700 hover:text-red-600'
+                        ? 'text-red-600'
+                        : 'text-gray-700 hover:text-red-600'
                         }`}
                     >
                       <span>{item.title}</span>
@@ -435,8 +440,8 @@ const Navbar = () => {
                       {/* Active/Hover Underline */}
                       <div
                         className={`absolute bottom-0 left-0 w-full h-0.5 bg-red-600 transition-all duration-200 ${isNavItemActive(item.href) || activeDropdown === item.title || hoveredItem === item.title
-                            ? 'opacity-100 scale-x-100'
-                            : 'opacity-0 scale-x-0'
+                          ? 'opacity-100 scale-x-100'
+                          : 'opacity-0 scale-x-0'
                           }`}
                       />
                     </button>
@@ -445,18 +450,18 @@ const Navbar = () => {
                       href={item.href}
                       onClick={handleNavItemClick}
                       onMouseEnter={() => handleNavItemMouseEnter(item.title)}
-                      onMouseLeave={handleNavItemMouseLeave}
+                      onMouseLeave={() => handleNavItemMouseLeave}
                       className={`navbar-item flex items-center space-x-1 px-3 py-2 text-sm font-medium transition-colors duration-200 relative ${isNavItemActive(item.href) || hoveredItem === item.title
-                          ? 'text-red-600'
-                          : 'text-gray-700 hover:text-red-600'
+                        ? 'text-red-600'
+                        : 'text-gray-700 hover:text-red-600'
                         }`}
                     >
                       <span>{item.title}</span>
                       {/* Active/Hover Underline */}
                       <div
                         className={`absolute bottom-0 left-0 w-full h-0.5 bg-red-600 transition-all duration-200 ${isNavItemActive(item.href) || hoveredItem === item.title
-                            ? 'opacity-100 scale-x-100'
-                            : 'opacity-0 scale-x-0'
+                          ? 'opacity-100 scale-x-100'
+                          : 'opacity-0 scale-x-0'
                           }`}
                       />
                     </Link>
