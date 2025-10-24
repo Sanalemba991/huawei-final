@@ -394,17 +394,27 @@ const Navbar = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
+            {/* Logo - Simple Fix */}
             <div className="flex-shrink-0">
               <Link href="/" onClick={handleLogoClick}>
-                <Image
-                  src="/huaweilogo-new.png"
-                  alt="Huawei"
-                  width={isScrolled ? 100 : 120}
-                  height={isScrolled ? 30 : 40}
-                  priority
-                  className={`transition-all duration-300 ${isScrolled ? 'h-6 w-auto' : 'h-8 w-auto'
-                    }`}
-                />
+                <div className="relative">
+                  <Image
+                    src="/Huawei.png"
+                    alt="Huawei Authorized Distributor in UAE"
+                    width={200}          // Increased from 120
+                    height={67}          // Increased from 40 to maintain aspect ratio
+                    quality={100}        // Already at max quality
+                    priority            // Already prioritized
+                    className={`
+                      object-contain transition-all duration-300
+                      ${isScrolled ? 'h-8 w-auto' : 'h-10 w-auto'}`}
+                    style={{            // Add style prop for image rendering
+                      imageRendering: 'crisp-edges',
+                      WebkitFontSmoothing: 'antialiased'
+                    }}
+                    unoptimized        // Add this to prevent Next.js optimization
+                  />
+                </div>
               </Link>
             </div>
 
@@ -418,8 +428,8 @@ const Navbar = () => {
                       onMouseEnter={(e) => handleDropdownMouseEnter(item.title, e)}
                       onMouseLeave={handleDropdownMouseLeave}
                       className={`navbar-item flex items-center space-x-1 px-3 py-2 text-sm font-medium transition-colors duration-200 relative ${isNavItemActive(item.href) || activeDropdown === item.title || hoveredItem === item.title
-                          ? 'text-red-600'
-                          : 'text-gray-700 hover:text-red-600'
+                        ? 'text-red-600'
+                        : 'text-gray-700 hover:text-red-600'
                         }`}
                     >
                       <span>{item.title}</span>
@@ -427,8 +437,8 @@ const Navbar = () => {
                       {/* Active/Hover Underline */}
                       <div
                         className={`absolute bottom-0 left-0 w-full h-0.5 bg-red-600 transition-all duration-200 ${isNavItemActive(item.href) || activeDropdown === item.title || hoveredItem === item.title
-                            ? 'opacity-100 scale-x-100'
-                            : 'opacity-0 scale-x-0'
+                          ? 'opacity-100 scale-x-100'
+                          : 'opacity-0 scale-x-0'
                           }`}
                       />
                     </button>
@@ -439,16 +449,16 @@ const Navbar = () => {
                       onMouseEnter={() => handleNavItemMouseEnter(item.title)}
                       onMouseLeave={handleNavItemMouseLeave}
                       className={`navbar-item flex items-center space-x-1 px-3 py-2 text-sm font-medium transition-colors duration-200 relative ${isNavItemActive(item.href) || hoveredItem === item.title
-                          ? 'text-red-600'
-                          : 'text-gray-700 hover:text-red-600'
+                        ? 'text-red-600'
+                        : 'text-gray-700 hover:text-red-600'
                         }`}
                     >
                       <span>{item.title}</span>
                       {/* Active/Hover Underline */}
                       <div
                         className={`absolute bottom-0 left-0 w-full h-0.5 bg-red-600 transition-all duration-200 ${isNavItemActive(item.href) || hoveredItem === item.title
-                            ? 'opacity-100 scale-x-100'
-                            : 'opacity-0 scale-x-0'
+                          ? 'opacity-100 scale-x-100'
+                          : 'opacity-0 scale-x-0'
                           }`}
                       />
                     </Link>
