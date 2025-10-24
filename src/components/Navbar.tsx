@@ -393,19 +393,27 @@ const Navbar = () => {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            {/* Logo */}
-            <div className="flex-shrink-0">
-              <Link href="/" onClick={handleLogoClick}>
-                <Image
-                  src="/huaweilogo-new.png"
-                  alt="Huawei"
-                  width={isScrolled ? 100 : 120}
-                  height={isScrolled ? 30 : 40}
-                  priority
-                  className={`transition-all duration-300 ${isScrolled ? 'h-6 w-auto' : 'h-8 w-auto'
-                    }`}
-                />
-              </Link>
+            {/* Logo and Distributor Text */}
+            <div className="flex-shrink-0 flex items-center">
+              <div className="flex flex-col">
+                <Link href="/" onClick={handleLogoClick}>
+                  <Image
+                    src="/huaweilogo-new.png"
+                    alt="Huawei"
+                    width={isScrolled ? 100 : 120}
+                    height={isScrolled ? 30 : 40}
+                    priority
+                    className={`transition-all duration-300 ${isScrolled ? 'h-6 w-auto' : 'h-8 w-auto'
+                      }`}
+                  />
+                </Link>
+                {/* Authorized Distributor Text - Always visible */}
+                <div className="text-xs font-semibold tracking-wide mt-1">
+                  <span className="text-black">Authorized</span>
+                  <span className="text-black"> Distributor in </span>
+                  <span className="text-red-600">UAE</span>
+                </div>
+              </div>
             </div>
 
             {/* Desktop Navigation */}
